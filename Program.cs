@@ -18,11 +18,10 @@ namespace H3IoTApi
             builder.Services.AddSwaggerGen();
 
             // Get connectionstring from environment
-            //var connectionString = Environment.GetEnvironmentVariable("DefaultConnection") ?? throw new InvalidOperationException("Connection string not found!");
+            var connectionString = Environment.GetEnvironmentVariable("DefaultConnection") ?? throw new InvalidOperationException("Connection string not found!");
 
-            //// Configure DbContext
-            //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString(connectionString)));
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            // Configure DbContext
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString(connectionString)));
 
             var app = builder.Build();
 

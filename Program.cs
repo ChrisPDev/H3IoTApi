@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using H3IoTApi.Data;
+
 namespace H3IoTApi
 {
     public class Program
@@ -14,10 +17,18 @@ namespace H3IoTApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // Configure DbContext
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+            else
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();

@@ -1,0 +1,6 @@
+@H3IoTApi_HostAddress = http://localhost:5013
+
+GET {{H3IoTApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -23,5 +23,28 @@ namespace H3IoTApi.Controllers
 
             return Ok(tempAndSoilMoist);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetTempAndSoilMoist(int id)
+        {
+            var tempAndSoilMoist = _context.temperatureReading.Find(id);
+
+            if (tempAndSoilMoist == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(tempAndSoilMoist);
+        }
+
+        [HttpPost]
+        public IActionResult CreateTempAndSoilMoist(TempAndSoilMoist tempAndSoilMoist)
+        {
+            _context.tempAndSoilMoist.Add(tempAndSoilMoist);
+
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(GetTempAndSoilMoist), new { id = tempAndSoilMoist.Id }, tempAndSoilMoist);
+        }
     }
 }

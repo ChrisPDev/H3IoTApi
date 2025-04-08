@@ -11,5 +11,6 @@ namespace H3IoTApi.Data
 
         }
         public DbSet<TemperatureReading> temperatureReading { get; set; }
+        public DbSet<TempAndSoilMoist> tempAndSoilMoist { get; set; }
     }
 }

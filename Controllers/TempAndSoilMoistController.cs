@@ -27,7 +27,7 @@ namespace H3IoTApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetTempAndSoilMoist(int id)
         {
-            var tempAndSoilMoist = _context.temperatureReading.Find(id);
+            var tempAndSoilMoist = _context.tempAndSoilMoist.Find(id);
 
             if (tempAndSoilMoist == null)
             {
